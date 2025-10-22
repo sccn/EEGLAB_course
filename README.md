@@ -1,13 +1,18 @@
 # Introduction
 
 This repository is for the EEGLAB sessions of the [practical MEEG 2022 workshop](https://practicalmeeg2022.org/). There are 5 sessions:
-* Preprocessing
-* Single sensor analysis (ERP/ERF)
-* Single and distributed sources
-* Time-frequency domain
-* Group-level analysis
-
 For each session, we have prepared a script detailed below.
+
+https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y
+
+# Sessions
+
+- Session 1, Tue Oct 28, 10:30–12:30 — Preprocessing, segmentation and artefacts
+- Session 2, Tue Oct 28, 15:10–17:10 — Tune in to your frequency space analysis
+- Session 3, Wed Oct 29, 10:30–12:30 — Source level analysis I: Getting to source level maps
+- Session 4, Wed Oct 29, 15:10–17:10 — Source level analysis II: Analysing source time-series
+- Session 5, Thu Oct 30, 10:30–12:30 — Get and report results with confidence I: Univariate approach
+- Session 6, Fri Oct 31, 10:30–12:30 — Get and report results with confidence II: Multivariate approach
 
 # Data
 
