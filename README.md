@@ -3,7 +3,11 @@
 This repository is for the EEGLAB sessions of the [practical MEEG 2022 workshop](https://practicalmeeg2022.org/). There are 5 sessions:
 For each session, we have prepared a script detailed below.
 
+Word document
 https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y
+
+Presentations
+
 
 # Sessions
 
