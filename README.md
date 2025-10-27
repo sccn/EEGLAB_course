@@ -32,7 +32,7 @@ For Session 5, copy the data folder (please rename to 'ds002718') containing the
 
 # Preprocessing
 
-For this presentation, we will first import the data with the [PracticalMEEG_Import_Data_Session_1.m](PracticalMEEG_Import_Data_Session_1.m) script. This script has 11 steps. 
+For this presentation, we will first import the data with the [PracticalMEEG_Session_1_Import_Data.m](PracticalMEEG_Session_1_Import_Data.m) script. This script has 11 steps. 
 
 * Step 1: Importing MEG data files with FileIO
 * Step 2: Adding fiducials and rotating montage
@@ -46,7 +46,7 @@ For this presentation, we will first import the data with the [PracticalMEEG_Imp
 * Step 10: Replacing original imported channels
 * Step 11: Creating folder to save data if does not exist yet
 
-After importing the data, it is preprocessed using the [PracticalMEEG_Preprocess_Data_Session_1.m](PracticalMEEG_Preprocess_Data_Session_1.m) script. This script itself has several steps.
+After importing the data, it is preprocessed using the [PracticalMEEG_Session_1_Preprocess_Data.m](PracticalMEEG_Session_1_Preprocess_Data.m) script. This script itself has several steps.
 
 * Re-Reference the data
 * Resampling the data (for speed)
@@ -58,9 +58,10 @@ After importing the data, it is preprocessed using the [PracticalMEEG_Preprocess
 * automatically classify Independent Components using IC Label
 * Save dataset
 
+
 # Single sensor analysis (ERP/ERF)
 
-For this presentation, we will use different vizualization techniques using the [PracticalMEEG_ERP_Analysis_Session_2.m](PracticalMEEG_ERP_Analysis_Session_2.m) script. The script first further process the data as follow.
+For this presentation, we will use different vizualization techniques using the [PracticalMEEG_Session_1_ERP_Analysis.m](PracticalMEEG_Session_1_ERP_Analysis.m) script. The script first further process the data as follow.
 
 * Extract data epochs for the famous, scrambled, and unfamiliar face stimuli
 * Remove the baseline from -1000 ms to 0 pre-stimulus
@@ -70,26 +71,25 @@ For this presentation, we will use different vizualization techniques using the 
 Then it plots the data using the following methods:
 
 * Plot ERP butterfly plot and scalp distribution at different latencies
-* Plot ICA component contribution to the ERP
 * Remove ICA artifactual components and replot
 * Plot series of scalp topography at different latencies
 * Plot conditions overlaid on each other
 * Plot ERPimages
 
+# Time-frequency decomposition
+
+For this presentation, we will the script [PracticalMEEG_Session_2_Time_Frequency_Analysis.m](PracticalMEEG_Session_2_Time_Frequency_Analysis.m). It performs the following steps.
+
+* Spectral analysis for each of the conditions
+* Time-frequency analysis for each of the conditions
+
 # Single and distributed sources
 
-For this presentation, we will the script [PracticalMEEG_Source_Reconstruction_Session_4.m](PracticalMEEG_Source_Reconstruction_Session_4.m). It performs the following steps.
+For this presentation, we will the script [PracticalMEEG_Session_3_Source_Reconstruction.m](PracticalMEEG_Session_3_Source_Reconstruction.m). It performs the following steps.
 
 * Definition of head model and source model
 * Localization of ICA components
 * Plotting of ICA components overlaid on 3-D template MRI
-
-# Time-frequency decomposition
-
-For this presentation, we will the script [PracticalMEEG_Time_Frequency_Analysis_Session_3.m](PracticalMEEG_Time_Frequency_Analysis_Session_3.m). It performs the following steps.
-
-* Spectral analysis for each of the conditions
-* Time-frequency analysis for each of the conditions
 
 # Group-level analysis
 
