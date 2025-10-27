@@ -67,24 +67,6 @@ figure; pop_timtopo(ALLEEG(2), [-100  600], [NaN], 'ERP data and scalp maps of F
 figure; pop_timtopo(ALLEEG(3), [-100  600], [NaN], 'ERP data and scalp maps of Unfamiliar Epoched');
 figure; pop_timtopo(ALLEEG(4), [-100  600], [NaN], 'ERP data and scalp maps of Scrambled Epoched');
 
-%% plot Component 5 contributions to ERP scalp envelope with channel projection 
-pop_envtopo(ALLEEG(2), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'compnums',[5],'title', 'Famous','electrodes','off', 'plotproj', 1);
-
-%% plot Component contributions to ERP scalp envelope 
-pop_envtopo(ALLEEG(2), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'title', 'Largest ERP components of Famous Epoched','electrodes','off');
-pop_envtopo(ALLEEG(3), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'title', 'Largest ERP components of Unfamiliar Epoched','electrodes','off');
-pop_envtopo(ALLEEG(4), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'title', 'Largest ERP components of Scrambled Epoched','electrodes','off');
-
-%% plot Component contributions to ERP scalp envelope - removing artefact ICs
-pop_envtopo(ALLEEG(2), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Largest ERP components of Famous Epoched','electrodes','off');
-pop_envtopo(ALLEEG(3), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Largest ERP components of Unfamiliar Epoched','electrodes','off');
-pop_envtopo(ALLEEG(4), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Largest ERP components of Scrambled Epoched','electrodes','off');
-
-%% plot Component contributions to ERP scalp envelope - removing artefact ICs - plot differences between conditions
-pop_envtopo(([ALLEEG(2)  ALLEEG(4)]), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Famous - Scrambled','electrodes','off');
-pop_envtopo(([ALLEEG(2)  ALLEEG(3)]), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Famous - Unfamiliar','electrodes','off');
-pop_envtopo(([ALLEEG(3)  ALLEEG(4)]), [-100  600] ,'limcontrib',[0 400],'compsplot',[7],'subcomps',[1 6],'title', 'Unfamiliar - Scrambled','electrodes','off');
-
 %% Identify Brain ICs using IC Label classification results
 if isfield(ALLEEG(1).etc, 'ic_classification')
     [M,I] = max(ALLEEG(1).etc.ic_classification.ICLabel.classifications,[],2);                       % Use max prob for classification
@@ -111,11 +93,6 @@ figure; pop_timtopo(ALLEEG(2), [-100  600], [120  170  250], 'Famous');
 figure; pop_timtopo(ALLEEG(3), [-100  600], [120  170  250], 'Unfamiliar');
 figure; pop_timtopo(ALLEEG(4), [-100  600], [120  170  250], 'Scrambled');
 
-%% plot 3 largest contributing ICs to ERP
-pop_envtopo(ALLEEG(2), [-100  600] ,'limcontrib',[0 400],'compsplot',[3],'title', 'Famous','electrodes','off');
-pop_envtopo(ALLEEG(3), [-100  600] ,'limcontrib',[0 400],'compsplot',[3],'title', 'Unfamiliar','electrodes','off');
-pop_envtopo(ALLEEG(4), [-100  600] ,'limcontrib',[0 400],'compsplot',[3],'title', 'Scrambled','electrodes','off');
-
 %% Visualize channel ERPs in 2D
 pop_topoplot(ALLEEG(2), 1, [25:25:300] ,'Famous',[3 4] ,0,'electrodes','on');
 pop_topoplot(ALLEEG(3), 1, [25:25:300] ,'Unfamiliar',[3 4] ,0,'electrodes','on');
@@ -125,7 +102,6 @@ pop_topoplot(ALLEEG(4), 1, [25:25:300] ,'Scrambled',[3 4] ,0,'electrodes','on');
 figure; pop_plottopo(ALLEEG(2), [1:EEG.nbchan] , 'Famous', 0, 'ydir',1);
 figure; pop_plottopo(ALLEEG(3), [1:EEG.nbchan] , 'Unfamiliar', 0, 'ydir',1);
 figure; pop_plottopo(ALLEEG(4), [1:EEG.nbchan] , 'Scrambled', 0, 'ydir',1);
-
 
 %% plot average ERPs for each condition with standard deviation
 

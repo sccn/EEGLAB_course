@@ -37,7 +37,7 @@ EEG = pop_loadset('filename', filename,'filepath',path2data);
 
 %% Re-Reference
 % Apply Common Average Reference
-EEG = pop_reref(EEG,[]);
+EEG = pop_reref(EEG,[]); % menu item Tools > Rereference (eegh)
 
 %% Resampling
 % Downsampling to 100 Hz for speed (for real analysis prefer 250 or 500 Hz)
