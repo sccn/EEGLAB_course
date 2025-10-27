@@ -2,7 +2,7 @@
 % Wakeman & Henson Data analysis: Ereprocess Data Session #1 
 
 % Authors: Ramon Martinez-Cancino, Brain Products, 2022
-%          Romain Grandchamp, 2025
+%          Romain Grandchamp, LPNC, 2025
 %          Arnaud Delorme, SCCN, 2022-2025
 %          Johanna Wagner, Zander Labs, 2022
 %
@@ -34,8 +34,8 @@ filename = 'wh_S01_run_01.set';
 [ALLEEG, EEG, CURRENTSET] = eeglab; 
 
 %% Loading data 
-% use menu item File > Import Data > Using File-IO
-% and import file ds000117_pruned/derivatives/meg_derivatives/sub-01/ses-meg/meg/wh_S01_run_01.set
+% use menu item File > Load existing dataset
+% and select file ds000117_pruned/derivatives/meg_derivatives/sub-01/ses-meg/meg/wh_S01_run_01.set
 EEG = pop_loadset('filename', filename,'filepath',path2data);
 
 %% Re-Reference
@@ -85,7 +85,7 @@ EEG = clean_artifacts( EEG, 'Highpass', 'off',...
 % The -1 for the number of channel is to account for matrix rank 
 % decrease due to average reference
 if exist('picard') % faster
-    EEG = pop_runica( EEG , 'picard', 'maxiter', 500, 'pca', -1);
+    EEG = pop_runica( EEG , 'picard', 'maxiter', 500, 'pca', -1);% Do not forget to add 'pca',-1 in command line options to account for average reference
 else
     EEG = pop_runica( EEG , 'runica', 'extended',1, 'pca', -1);
 end

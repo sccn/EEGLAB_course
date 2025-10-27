@@ -1,8 +1,9 @@
 % Wakeman & Henson Data analysis: Extract EEG data and import events and channel location
 
 % Authors: Ramon Martinez-Cancino, Brain Products, 2022
-%          Arnaud Delorme, SCCN, 2022
+%          Arnaud Delorme, SCCN, 2022-2025
 %          Johanna Wagner, Zander Labs, 2022
+%          Romain Grandchamp, LPNC, 2025 
 %
 % Copyright (C) 2022  Ramon Martinez-Cancino 
 %
