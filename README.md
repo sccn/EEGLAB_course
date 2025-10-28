@@ -2,7 +2,7 @@
 
 This repository is for the EEGLAB sessions of the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
 
-Presentations in the presentation folder
+Presentations are in the presentation folder
 
 Posts at [https://forum.cuttingeeg.org/](https://forum.cuttingeeg.org/tag/eeglab)
 
