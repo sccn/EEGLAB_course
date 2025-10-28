@@ -2,9 +2,6 @@
 
 This repository is for the EEGLAB sessions of the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
 
-Word document
-https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y
-
 Presentations in the presentation folder
 
 Posts at [https://forum.cuttingeeg.org/](https://forum.cuttingeeg.org/tag/eeglab)
@@ -98,5 +95,10 @@ The script [PracticalMEEG_ERP_Analysis_GroupAnalysis_support.m](PracticalMEEG_ER
 
 * Removing components flagged for rejection using ICLabel
 * Plotting grand average ERPs
+
+# Notes
+
+[Word document (for organizers)](https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y)
+
 
 
