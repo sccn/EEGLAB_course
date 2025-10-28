@@ -2,7 +2,8 @@
 % Wakeman & Henson Data analysis: Spectral and Time-Frequency Analsyis
 
 % Authors: Ramon Martinez-Cancino, Brain Products, 2022
-%          Arnaud Delorme, SCCN, 2022
+%          Romain Grandchamp, LPNC, 2025
+%          Arnaud Delorme, SCCN, 2022-2025
 %          Johanna Wagner, Zander Labs, 2022
 %
 % Copyright (C) 2022  Ramon Martinez-Cancino 
