@@ -5,8 +5,9 @@ This repository is for the EEGLAB sessions of the [practical MEEG 2025 workshop]
 Word document
 https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y
 
-Presentations
+Presentations in the presentation folder
 
+Posts at [https://forum.cuttingeeg.org/](https://forum.cuttingeeg.org/tag/eeglab)
 
 # Sessions
 
