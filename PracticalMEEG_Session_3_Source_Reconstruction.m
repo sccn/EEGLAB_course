@@ -27,7 +27,7 @@ clear;
 clear globals;
 
 % Path to data below. Using relative paths so no need to update.
-path2data = fullfile(pwd,'ds000117_pruned', 'derivatives', 'meg_derivatives', 'sub-01', 'ses-meg/', 'meg/'); % Path to data 
+path2data = fullfile(pwd,'ds000117_pruned', 'derivatives', 'meg_derivatives', 'sub-01', 'ses-meg', 'meg'); % Path to data 
 filename = 'wh_S01_run_01_preprocessing_data_session_1_out.set';
 
 % Start EEGLAB
@@ -44,7 +44,7 @@ EEG = pop_rmbase(EEG, [-1000 0]);
 
 %% Source localization
 dipfitpath       = fileparts(which('pop_multifit'));
-electemplatepath = fullfile(dipfitpath,'standard_BEM/elec/standard_1005.elc');
+electemplatepath = fullfile(dipfitpath, 'standard_BEM', 'elec', 'standard_1005.elc');
 if ~contains(EEG.chanlocs(1).type, 'meg') % EEG only
     %  Clean data by rejecting epochs.
     EEG = pop_eegthresh(EEG, 1, 1:EEG.nbchan, -400, 400, EEG.xmin, EEG.xmax, 0, 1);
@@ -65,9 +65,13 @@ EEG = pop_multifit(EEG, 1:10,'threshold', 100, 'dipplot','off','plotopt',{'norml
 choosenIC = 4;
 EEG = pop_multifit(EEG, choosenIC, 'threshold', 100, 'dipoles', 2, 'plotopt', {'normlen' 'on'});
 
-%% Plot of all brain component dipoles
+%% Plot brain component dipole for component 5
 % There might be a coregistration issue with MEG as components tend to be frontal
-pop_dipplot( EEG, Brain_comps ,'mri',fullfile(dipfitpath,'/standard_BEM/standard_mri.mat'),'normlen','on', 'rvrange', 15);
+pop_dipplot( EEG, Brain_comps(2),'mri',fullfile(dipfitpath,'standard_BEM', 'standard_mri.mat'),'normlen','on', 'rvrange', 15);
+
+%% Compute leadfield and Loreta for that same component
+EEG = pop_leadfield(EEG, 'sourcemodel',fullfile(dipfitpath,'LORETA-Talairach-BAs.mat'),'sourcemodel2mni',[],'downsample',1);
+pop_dipfit_loreta(EEG, 3);
 
 %% ERP Image Dipole on Fusiform Area
 % Changing dipolarity
@@ -78,3 +82,9 @@ figure; pop_erpimage(EEG,0, choosenIC,[[]],['Comp. ' int2str(choosenIC) ],10,1,{
 
 %% Saving data
 EEG = pop_saveset( EEG,'filename', 'wh_S01_run_01_Source_Reconstruction_Session_4_out.set','filepath', path2data);
+
+%% Source reconstruction realistic
+EEG = pop_dipfit_headmodel(EEG, fullfile(pwd,'ds000117_pruned', 'sub-01','ses-mri','anat','sub-01_ses-mri_acq-mprage_T1w.nii.gz'), 'datatype','EEG','plotmesh','scalp');
+EEG = pop_dipfit_settings( EEG, 'coordformat','ctf','coord_transform',[6.9504 -1.0214 43.3393 1.0735e-07 -9.8111e-06 0.013134 10.5701 10.5701 10.5701] );
+EEG = pop_multifit(EEG, Brain_comps, 'threshold', 100, 'dipoles', 1, 'plotopt', {'normlen' 'on'});
+pop_dipplot( EEG, Brain_comps(2),'mri',EEG.dipfit.mrifile,'normlen','on', 'rvrange', 100);
