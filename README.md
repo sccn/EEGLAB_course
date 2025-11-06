@@ -1,32 +1,17 @@
 # Introduction
 
-This repository is for the EEGLAB sessions of the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
-
-Presentations are in the presentation folder
-
-Posts at [https://forum.cuttingeeg.org/](https://forum.cuttingeeg.org/tag/eeglab)
-
-# Sessions
-
-- Session 1, Tue Oct 28, 10:30–12:30 — Preprocessing, segmentation and artefacts
-- Session 2, Tue Oct 28, 15:10–17:10 — Tune in to your frequency space analysis
-- Session 3, Wed Oct 29, 10:30–12:30 — Source level analysis I: Getting to source level maps
-- Session 4, Wed Oct 29, 15:10–17:10 — Source level analysis II: Analysing source time-series
-- Session 5, Thu Oct 30, 10:30–12:30 — Get and report results with confidence I: Univariate approach
-- Session 6, Fri Oct 31, 10:30–12:30 — Get and report results with confidence II: Multivariate approach
+This repository is for the EEGLAB sessions of an EEGLAB course. This course was conducted at the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
 
 # Data
 
 We will use data from the multimodal face recognition dat. BIDS dataset containing a pruned version of the OpenNeuro dataset ds000117. It is available [here](https://zenodo.org/record/7410278).
 
-The dataset above only contains one subject. For group level analysis, please use the following BIDS repository [here](https://openneuro.org/datasets/ds002718/versions/1.0.5).
+The dataset above only contains one subject. For group level analysis, please use the following BIDS repository [here](https://openneuro.org/datasets/ds002718/versions/1.0.5). The preprocessed version of this dataset is available at (ds002718)](https://zenodo.org/records/5528500) (it is better to use the preprocessed version).
 
 The scripts using the single subject data assume the datafiles are located in the folder (Data/sub-01) located in the parent folder of this repository in your file system. See below the code used in the scripts to locate the file:
 
 	RootFolder = fileparts(pwd); % Getting root folder
 	path2data = fullfile(RootFolder,'Data', 'sub-01'); % Path to data 
-
-For Session 5, copy the data folder (please rename to 'ds002718') containing the ds002718 in the same 'Data' folder. These files will be distributed later on.
 
 # Preprocessing
 
