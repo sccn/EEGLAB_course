@@ -1,21 +1,105 @@
-# Introduction
+# Create Your Own EEGLAB Course
 
-This repository is for the EEGLAB sessions of an EEGLAB course. This course was conducted at the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
+This repository contains materials for EEGLAB course sessions. This course was originally conducted at the [practical MEEG 2025 workshop](https://cuttingeeg.org/practicalmeeg2025/).
 
-# Data
+You may adapt the materials as needed for your own course, although please acknowledge the authors of the materials.
 
-We will use data from the multimodal face recognition dat. BIDS dataset containing a pruned version of the OpenNeuro dataset ds000117. It is available [here](https://zenodo.org/record/7410278).
+## Course Slides
 
-The dataset above only contains one subject. For group level analysis, please use the following BIDS repository [here](https://openneuro.org/datasets/ds002718/versions/1.0.5). The preprocessed version of this dataset is available at (ds002718)](https://zenodo.org/records/5528500) (it is better to use the preprocessed version).
+Lecture slides for the course are available in two formats:
 
-The scripts using the single subject data assume the datafiles are located in the folder (Data/sub-01) located in the parent folder of this repository in your file system. See below the code used in the scripts to locate the file:
+**PDF format:** Available in the [slides](slides/) folder of this repository. The following presentations are included:
+- Introduction to the course
+- Data preprocessing
+- Event-Related Potentials (ERP) analysis
+- Spectral and time-frequency analysis
+- Source localization and ICA
+- Connectivity analysis
+- IC clustering
+- LIMO statistics
+- MVPA (Multivariate Pattern Analysis)
+- Deep learning applications
 
-	RootFolder = fileparts(pwd); % Getting root folder
-	path2data = fullfile(RootFolder,'Data', 'sub-01'); % Path to data 
+**PowerPoint format:** Editable PowerPoint versions of the slides are available at:
+[Google Drive - Course Slides](https://drive.google.com/drive/folders/17EqHqypmM0aIQVuoaDMLbfSnMh8zB_GG?usp=drive_link)
 
-# Preprocessing
+## Prerequisites
 
-For this presentation, we will first import the data with the [PracticalMEEG_Session_1_Import_Data.m](PracticalMEEG_Session_1_Import_Data.m) script. This script has 11 steps. 
+### Step 1 – Download and install MATLAB
+
+If you are organizing a course, you can usually obtain a [MATLAB trial version](https://www.mathworks.com/support/contact_us.html) for your participants by contacting the licensing department. Please have your participants install MATLAB in advance so you're ready to run EEGLAB during the course.
+
+### Step 2 – Download the data
+
+This course uses data from the multimodal face recognition BIDS dataset, a pruned version of the OpenNeuro dataset ds000117.
+
+**Download the pruned single-subject dataset (ds000117_pruned):**
+[https://zenodo.org/record/7410278](https://zenodo.org/record/7410278)
+
+This dataset contains only one subject.
+
+**For group-level analyses, also download the preprocessed group dataset (ds002718):**
+[https://zenodo.org/records/5528500](https://zenodo.org/records/5528500)
+
+Once downloaded, place both datasets (`ds000117_pruned` and `ds002718`) in a `Data` folder at the parent level of where you'll place your EEGLAB scripts.
+
+Your folder structure should look like this:
+
+```
+parent_folder/
+├── Data/
+│   ├── sub-01/          (from ds000117_pruned)
+│   └── ds002718/        (preprocessed group data)
+└── EEGLAB_course/       (this repository with scripts)
+```
+
+The scripts using the single subject data assume the datafiles are located in the folder `Data/sub-01` located in the parent folder of this repository. See below the code used in the scripts to locate the file:
+
+```matlab
+RootFolder = fileparts(pwd); % Getting root folder
+path2data = fullfile(RootFolder,'Data', 'sub-01'); % Path to data
+```
+
+### Step 3 – Download EEGLAB
+
+Now it's time to clone the EEGLAB Git repository on your computer.
+
+**Warning:** Do not download the ZIP file directly from GitHub, as it does not include EEGLAB submodules.
+
+Instead, use the following command to clone the repository and pull its submodules:
+
+```bash
+git clone --recurse-submodules https://github.com/sccn/eeglab.git
+```
+
+Or download from the [EEGLAB website](https://sccn.ucsd.edu/eeglab/download.php).
+
+### Step 4 – Check that EEGLAB runs
+
+1. Start MATLAB
+2. In MATLAB, navigate to the folder containing the EEGLAB repository
+3. At the MATLAB command prompt (>>), type: `eeglab`
+4. The EEGLAB main interface should appear
+
+If it opens without errors, you're all set for the workshop!
+
+### Step 5 – Download the course scripts
+
+During the course, participants will follow along and do hands-on work using the EEGLAB graphical interface. However, they can also run the scripts provided in this repository.
+
+Clone this repository:
+
+```bash
+git clone https://github.com/sccn/EEGLAB_course.git
+```
+
+## Course Content Overview
+
+The course materials are organized into several sessions, each focusing on different aspects of EEG/MEG data analysis using EEGLAB.
+
+### Session 1: Preprocessing
+
+For this presentation, we will first import the data with the [Session_1_Import_Data.m](Session_1_Import_Data.m) script. This script has 11 steps. 
 
 * Step 1: Importing MEG data files with FileIO
 * Step 2: Adding fiducials and rotating montage
@@ -29,7 +113,7 @@ For this presentation, we will first import the data with the [PracticalMEEG_Ses
 * Step 10: Replacing original imported channels
 * Step 11: Creating folder to save data if does not exist yet
 
-After importing the data, it is preprocessed using the [PracticalMEEG_Session_1_Preprocess_Data.m](PracticalMEEG_Session_1_Preprocess_Data.m) script. This script itself has several steps.
+After importing the data, it is preprocessed using the [Session_1_Preprocess_Data.m](Session_1_Preprocess_Data.m) script. This script itself has several steps.
 
 * Re-Reference the data
 * Resampling the data (for speed)
@@ -42,9 +126,9 @@ After importing the data, it is preprocessed using the [PracticalMEEG_Session_1_
 * Save dataset
 
 
-# Single sensor analysis (ERP/ERF)
+### Session 2: Single sensor analysis (ERP/ERF)
 
-For this presentation, we will use different vizualization techniques using the [PracticalMEEG_Session_1_ERP_Analysis.m](PracticalMEEG_Session_1_ERP_Analysis.m) script. The script first further process the data as follow.
+For this presentation, we will use different vizualization techniques using the [Session_2_ERP_Analysis.m](Session_2_ERP_Analysis.m) script. The script first further process the data as follow.
 
 * Extract data epochs for the famous, scrambled, and unfamiliar face stimuli
 * Remove the baseline from -1000 ms to 0 pre-stimulus
@@ -59,29 +143,29 @@ Then it plots the data using the following methods:
 * Plot conditions overlaid on each other
 * Plot ERPimages
 
-# Time-frequency decomposition
+### Session 2: Time-frequency decomposition
 
-For this presentation, we will the script [PracticalMEEG_Session_2_Time_Frequency_Analysis.m](PracticalMEEG_Session_2_Time_Frequency_Analysis.m). It performs the following steps.
+For this presentation, we will the script [Session_2_Time_Frequency_Analysis.m](Session_2_Time_Frequency_Analysis.m). It performs the following steps.
 
 * Spectral analysis for each of the conditions
 * Time-frequency analysis for each of the conditions
 
-# Single and distributed sources
+### Session 3: Single and distributed sources
 
-For this presentation, we will the script [PracticalMEEG_Session_3_Source_Reconstruction.m](PracticalMEEG_Session_3_Source_Reconstruction.m). It performs the following steps.
+For this presentation, we will the script [Session_3_Source_Reconstruction.m](Session_3_Source_Reconstruction.m). It performs the following steps.
 
 * Definition of head model and source model
 * Localization of ICA components
 * Plotting of ICA components overlaid on 3-D template MRI
 
-# Group-level analysis
+### Session 6: Group-level analysis
 
-The script [PracticalMEEG_ERP_Analysis_GroupAnalysis_support.m](PracticalMEEG_ERP_Analysis_GroupAnalysis_support.m) perform group analysis on a group of subjects.
+The script [Session_6_Group_Analysis_STUDY.m](Session_6_Group_Analysis_STUDY.m) perform group analysis on a group of subjects.
 
 * Removing components flagged for rejection using ICLabel
 * Plotting grand average ERPs
 
-# Notes
+## Notes
 
 [Word document (for organizers)](https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y)
 
