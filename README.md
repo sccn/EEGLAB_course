@@ -46,8 +46,10 @@ The scripts expect the following folder structure:
 
 ```
 parent_folder/
-EEGLAB_course/
-│   └── ds002718_5_Subjects/       (preprocessed group data for Session 6)
+├── Data/
+│   └── sub-01/                    (processed files for Session 4)
+└── EEGLAB_course/
+    ├── ds002718_5_Subjects/       (preprocessed group data for Session 6)
     ├── ds000117_pruned/           (raw data for Sessions 1, 2, 3, 5)
     │   └── derivatives/
     │       └── meg_derivatives/
@@ -59,9 +61,9 @@ EEGLAB_course/
 
 **Setup instructions:**
 1. Place the `ds000117_pruned` folder **inside** the `EEGLAB_course` folder (used by Sessions 1, 2, 3, 5)
-2. Create a `Data` folder in the **parent** folder of `EEGLAB_course` and extract:
+2. Place the `ds002718_5_Subjects` folder **inside** the `EEGLAB_course` folder (used by Session 6)
+3. Create a `Data` folder in the **parent** folder of `EEGLAB_course` and extract:
    - Processed single-subject files to `Data/sub-01/` (for Session 4)
-   - Group dataset to `Data/ds002718_5_Subjects/` (for Session 6)
 
 **Note:** Sessions 1-3 generate processed files. Session 4 expects to find these in the parent `Data/sub-01/` folder, so you may need to copy output files from earlier sessions there.
 
