@@ -207,9 +207,12 @@ The script [Session_6_Group_Analysis_STUDY.m](Session_6_Group_Analysis_STUDY.m) 
 * Removing components flagged for rejection using ICLabel
 * Plotting grand average ERPs
 
-## Notes
+## Advises on conducting the course
 
-[Word document (for organizers)](https://docs.google.com/document/d/1ZTAThzt1QemsTDz7Fl2ZCMVdU5sR7ExTkCLmn7gYJmE/edit?tab=t.0#heading=h.86k8by9oib0y)
+Give the lecture for the course and run the hands on exercises that accompany the PowerPoint slides. The scripts can support the demonstrations, although relying on them too heavily can overwhelm beginners. Most participants will follow the GUI more easily, so position the scripts as a reference rather than the primary workflow.
 
+To continue to Session 2, participants must either run the script [Session_1_Import_Data.m](Session_1_Import_Data.m)  or manually reproduce all import steps in the GUI, which is impractical for this dataset. The raw files require several technical adjustments that are not beginner friendly. For Session 1, a practical compromise is to have users import the FIF file in the GUI, select the EEG channels, explore the raw data briefly, then execute the import script to complete the required preprocessing. The second script, [Session_1_Preprocess_Data.m](Session_1_Preprocess_Data.m), can be reproduced entirely with the GUI if students prefer to work interactively.
 
+From Session 3 onward, the scripts function mainly as optional examples. All core operations can be performed in the GUI. Instructors can choose whether to demonstrate scripts to illustrate reproducible workflows, but this should not be required for participants to progress.
 
+A few additional suggestions can improve the course experience. Clarify early that ICA may yield slightly different outcomes across computers and that this variability is normal. Finally, alternate between explanation and hands on exploration so participants stay engaged and do not fall behind. Have a teaching assistant present throughout the session so participants who get stuck can receive prompt one to one support without interrupting the flow of the course.
