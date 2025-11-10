@@ -30,8 +30,7 @@ STUDY  = pop_limo(STUDY, ALLEEG, 'method','WLS','measure','daterp','timelim',[-5
 
 % 2nd level analysis - ANOVA on Beta parameters 1 2 3
 chanlocs = [STUDY.filepath filesep 'limo_gp_level_chanlocs.mat'];
-mkdir([STUDY.filepath filesep '1-way-ANOVA'])
-cd([STUDY.filepath filesep '1-way-ANOVA'])
+cd(STUDY.filepath); mkdir('1-way-ANOVA'); cd('1-way-ANOVA')
 limo_random_select('Repeated Measures ANOVA',chanlocs,'LIMOfiles',...
     {[STUDY.filepath filesep 'LIMO_Face_detection' filesep 'Beta_files_Face_detection_ANOVA_Faces_GLM_Channels_Time_WLS.txt']},...
     'analysis_type','Full scalp analysis','parameters',{[1 2 3]},...
@@ -42,7 +41,8 @@ limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 3 ,[0.5 -1 0.5]);
 limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 4);               % do the bootstrap of the last contrast
 
 % figures
-limo_eeg(5,pwd) % channel*time imagesc for both effects and contrast
+limo_display_results(1,'ess_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0); % course plot
+saveas(gcf, 'contrast_image.fig'); close(gcf)
 limo_display_results(3,'ess_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'channels',49); % course plot
 saveas(gcf, 'contrast_timecourse.fig'); close(gcf)
 
@@ -71,8 +71,7 @@ con1_files = fullfile(STUDY.filepath,[ 'LIMO_' STUDY.filename(1:end-6)],'con_1_f
 con2_files = fullfile(STUDY.filepath,[ 'LIMO_' STUDY.filename(1:end-6)],'con_2_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt');
 con3_files = fullfile(STUDY.filepath,[ 'LIMO_' STUDY.filename(1:end-6)],'con_3_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt');
 
-mkdir([STUDY.filepath filesep '1-way-ANOVA-revised'])
-cd([STUDY.filepath filesep '1-way-ANOVA-revised'])
+cd(STUDY.filepath); mkdir('1-way-ANOVA-revised'); cd('1-way-ANOVA-revised')
 limo_random_select('Repeated Measures ANOVA',chanlocs,'LIMOfiles', {con1_files,con2_files,con3_files},...
     'analysis_type','Full scalp analysis','parameters',{[1 1 1]},...
     'factor names',{'face'},'type','Channels','nboot',1000,'tfce',0,'skip design check','yes');
@@ -82,7 +81,8 @@ limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 3 ,[0.5 -1 0.5]);
 limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 4);               % do the bootstrap of the last contrast
 
 % figures
-limo_eeg(5,pwd) % channel*time imagesc for both effects and contrast
+limo_display_results(1,'ess_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0); % image plot
+saveas(gcf, 'contrast_image.fig'); close(gcf)
 limo_display_results(3,'ess_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'channels',49); % course plot
 saveas(gcf, 'contrast_timecourse.fig'); close(gcf)
 
@@ -112,20 +112,19 @@ contrast.mat = [0.5 0.5 0.5 -1 -1 -1 0.5 0.5 0.5];
 limo_batch('contrast only',[],contrast);
 
 % let's compute the one-sample t-test on this contrast 
-mkdir('one_sample'); cd('one_sample');
+cd(STUDY.filepath); mkdir('one_sample'); cd('one_sample');
 limo_random_select('one sample t-test',chanlocs,'LIMOfiles',...
     fullfile(STUDY.filepath,['LIMO_' STUDY.filename(1:end-6)],'con_4_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt'),...
     'analysis_type','Full scalp analysis', 'type','Channels','nboot',101,'tfce',0);
-limo_eeg(5,pwd)
-limo_display_results(3,'one_sample_ttest_parameter_1.mat',pwd,0.05,2,...
-    fullfile(pwd,'LIMO.mat'),0,'channels',49,'sumstats','mean'); % course plot
+limo_display_results(1,'one_sample_ttest_parameter_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'sumstats','mean'); % image plot
+saveas(gcf, 'One_sample_image.fig'); close(gcf)
+limo_display_results(3,'one_sample_ttest_parameter_1.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'channels',49,'sumstats','mean'); % course plot
 saveas(gcf, 'One_sample_timecourse.fig'); close(gcf)
 
 %% Two-ways Face * Repetition ANOVA
 % https://github.com/LIMO-EEG-Toolbox/limo_meeg/wiki/7.-Two-way-ANOVA-(Faces-x-Repetition)
 
-cd(STUDY.filepath)
-mkdir('Face-Repetition_ANOVA');cd('Face-Repetition_ANOVA')
+cd(STUDY.filepath); mkdir('Face-Repetition_ANOVA');cd('Face-Repetition_ANOVA')
 LIMOPath = limo_random_select('Repeated Measures ANOVA',chanlocs,'LIMOfiles',...
     fullfile(STUDY.filepath,['LIMO_' STUDY.filename(1:end-6)],'Beta_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt'),...
     'analysis_type','Full scalp analysis','parameters',{[1 2 3],[4 5 6],[7 8 9]},...
@@ -136,7 +135,8 @@ limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 3 ,[1 1 1 0 0 0 -
 limo_contrast(fullfile(pwd,'Yr.mat'),fullfile(pwd,'LIMO.mat'), 4);                         % do the bootstrap - although here there is no effect anyway
 
 % figures
-limo_eeg(5,pwd)
+limo_display_results(1,'Rep_ANOVA_Main_effect_1_face.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'sumstats','mean'); % image plot
+saveas(gcf, 'Rep_ANOVA_Main_effect_1_face.fig'); close(gcf)
 
 %% paired t-test famous vs. unfamiliar controling for scrambled
 % https://github.com/LIMO-EEG-Toolbox/limo_meeg/wiki/8.-Paired-t-test-(Famous-vs-Unfamiliar)
@@ -155,8 +155,9 @@ limo_batch('contrast only',[],contrast);
 
 % note here con5 and con6 because in previous steps of the tutorial we have
 % contrasts 1,2,3 from design and contrast 4 from the interaction effect
-mkdir('Paired_ttest'); cd('Paired_ttest');
+cd(STUDY.filepath); mkdir('Paired_ttest'); cd('Paired_ttest');
 files = {fullfile(STUDY.filepath,['LIMO_' STUDY.filename(1:end-6)],'con_5_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt'), ...
     fullfile(STUDY.filepath,['LIMO_' STUDY.filename(1:end-6)],'con_6_files_Face_detection_FaceRepAll_GLM_Channels_Time_WLS.txt')};
 limo_random_select('paired t-test',chanlocs,'LIMOfiles',files,...
     'analysis_type','Full scalp analysis', 'type','Channels','nboot',1000,'tfce',0);
+limo_display_results(1,'Paired_Samples_Ttest_parameter_5_6.mat',pwd,0.05,2,fullfile(pwd,'LIMO.mat'),0,'sumstats','mean');

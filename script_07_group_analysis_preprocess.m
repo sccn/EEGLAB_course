@@ -16,7 +16,7 @@ CURRENTSTUDY = 1; EEG = ALLEEG; CURRENTSET = [1:length(EEG)];
 eeglab redraw
 
 % Preprocessing
-Remove bad channels
+% Remove bad channels
 EEG = pop_clean_rawdata( EEG,'FlatlineCriterion',5,'ChannelCriterion',0.8,...
     'LineNoiseCriterion',2.5,'Highpass',[0.25 0.75] ,...
     'BurstCriterion','off','WindowCriterion','off','BurstRejection','off',...
@@ -57,4 +57,3 @@ ALLEEG = pop_saveset(ALLEEG, 'savemode','resave');
 STUDY  = std_checkset(STUDY, ALLEEG);
 [STUDY, EEG] = std_precomp(STUDY, EEG, {}, 'savetrials','on','interp','on','recompute','on',...
     'erp','on','erpparams', {'rmbase' [-200 0]}, 'spec','off', 'ersp','off','itc','off');
-eeglab redraw

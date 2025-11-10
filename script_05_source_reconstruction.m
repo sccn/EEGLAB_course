@@ -64,8 +64,12 @@ figure; pop_erpimage(EEG,0, choosenIC,[[]],['Comp. ' int2str(choosenIC) ],10,1,{
 %% Saving data
 EEG = pop_saveset( EEG,'filename', 'wh_S01_run_01_Source_Reconstruction_Session_4_out.set','filepath', path2data);
 
-%% Source reconstruction realistic
-EEG = pop_dipfit_headmodel(EEG, fullfile(pwd,'ds000117_pruned', 'sub-01','ses-mri','anat','sub-01_ses-mri_acq-mprage_T1w.nii.gz'), 'datatype','EEG','plotmesh','scalp');
-EEG = pop_dipfit_settings( EEG, 'coordformat','ctf','coord_transform',[6.9504 -1.0214 43.3393 1.0735e-07 -9.8111e-06 0.013134 10.5701 10.5701 10.5701] );
-EEG = pop_multifit(EEG, Brain_comps, 'threshold', 100, 'dipoles', 1, 'plotopt', {'normlen' 'on'});
-pop_dipplot( EEG, Brain_comps(2),'mri',EEG.dipfit.mrifile,'normlen','on', 'rvrange', 100);
+%% Source reconstruction realistic (requires a to download the file sub-01_ses-mri_acq-mprage_T1w.nii.gz)
+file_mri = fullfile(pwd,'ds000117_pruned', 'sub-01','ses-mri','anat','sub-01_ses-mri_acq-mprage_T1w.nii.gz');
+file_mri_info = dir(file_mri);
+if exist(file_mri) && file_mri_info.bytes > 1000
+    EEG = pop_dipfit_headmodel(EEG, file_mri, 'datatype','EEG','plotmesh','scalp');
+    EEG = pop_dipfit_settings( EEG, 'coordformat','ctf','coord_transform',[6.9504 -1.0214 43.3393 1.0735e-07 -9.8111e-06 0.013134 10.5701 10.5701 10.5701] );
+    EEG = pop_multifit(EEG, Brain_comps, 'threshold', 100, 'dipoles', 1, 'plotopt', {'normlen' 'on'});
+    pop_dipplot( EEG, Brain_comps(2),'mri',EEG.dipfit.mrifile,'normlen','on', 'rvrange', 100);
+end
