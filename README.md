@@ -309,16 +309,16 @@ The 23 slides give a hands on walkthrough of GLM based univariate statistics in 
 
 The scripts accompany the presentations, although they are not required for students to complete the course. The material is aimed primarily at beginners who may not yet know how to script, so the presentations do not explicitly describe these files. The scripts nevertheless mirror the workflow shown in each session and can be used to reproduce the results demonstrated during the lectures. Students who wish to explore further can consult the help messages of the functions used in each script.
 
-• **script_01_import_data.m** - Imports raw EEG or MEG data and events into EEGLAB. Refers to Session_1.3_preprocessing.
-• **script_02_preprocess_data.m** - Runs filtering, bad channel detection, ASR, ICA and IC cleaning. Refers to Session_1.3_preprocessing.
-• **script_03_epochs_and_erp.m** - Creates epochs, computes ERPs and prepares data for ERP analysis. Refers to Session_2.1_ERP.
-• **script_04_time_frequency.m** - Computes ERSP, ITC and other time frequency measures. Refers to Session_2.2_TimeFrequencyAnalysis.
-• **script_05_source_reconstruction.m** - Runs DIPFIT, computes dipoles and distributed source models. Refers to Session_3.1_Source_Localization_ICA.
-• **script_06_connectivity.m** - Computes VAR models, Granger causality and ROI connectivity. Refers to Session_3.2_connectivity.
-• **script_07_group_analysis_preprocess.m** - Prepares multi subject datasets and STUDY structures for group analysis. Refers to Session4_IC_Clustering and Session_5.x statistics.
-• **script_08_group_analysis.m** - Runs group level STUDY measures including clustering and group ERPs. Refers to Session4_IC_Clustering.
-• **script_09_ica_clustering.m** - Performs IC clustering across subjects using STUDY. Refers to Session4_IC_Clustering.
-• **script_10_limo_erp.m** - Runs GLM based univariate statistics using LIMO EEG. Refers to Session_5.1 and Session_5.2 univariate statistics.
+* **script_01_import_data.m** - Imports raw EEG or MEG data and events into EEGLAB. Refers to Session_1.3_preprocessing.
+* **script_02_preprocess_data.m** - Runs filtering, bad channel detection, ASR, ICA and IC cleaning. Refers to Session_1.3_preprocessing.
+* **script_03_epochs_and_erp.m** - Creates epochs, computes ERPs and prepares data for ERP analysis. Refers to Session_2.1_ERP.
+* **script_04_time_frequency.m** - Computes ERSP, ITC and other time frequency measures. Refers to Session_2.2_TimeFrequencyAnalysis.
+* **script_05_source_reconstruction.m** - Runs DIPFIT, computes dipoles and distributed source models. Refers to Session_3.1_Source_Localization_ICA.
+* **script_06_connectivity.m** - Computes VAR models, Granger causality and ROI connectivity. Refers to Session_3.2_connectivity.
+* **script_07_group_analysis_preprocess.m** - Prepares multi subject datasets and STUDY structures for group analysis. Refers to Session4_IC_Clustering and Session_5.x statistics.
+* **script_08_group_analysis.m** - Runs group level STUDY measures including clustering and group ERPs. Refers to Session4_IC_Clustering.
+* **script_09_ica_clustering.m** - Performs IC clustering across subjects using STUDY. Refers to Session4_IC_Clustering.
+* **script_10_limo_erp.m** - Runs GLM based univariate statistics using LIMO EEG. Refers to Session_5.1 and Session_5.2 univariate statistics.
 
 ## Advises on conducting the course
 
