@@ -1,0 +1,10 @@
+# Ignore data folders
+ds000117_pruned/
+eeglab/
+ds002718/
+
+# Ignore slides folder completely
+slides/
+
+# Keep all .m files tracked
+!*.m
